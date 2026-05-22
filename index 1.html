@@ -1,0 +1,286 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Syne+Mono:wght@400&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F2EFE8;--ink:#0D0D0D;--red:#D63B2F;--pale:#E8E4DA}
+body{background:var(--bg);color:var(--ink);font-family:'Syne',sans-serif;overflow-x:hidden}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:2px solid var(--ink);background:var(--ink);color:var(--bg)}
+.nav-name{font-size:13px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--bg);text-decoration:none;font-size:12px;letter-spacing:0.1em;opacity:0.6;transition:opacity .2s;cursor:pointer}
+.nav-links a:hover{opacity:1}
+
+.hero{position:relative;padding:3rem 2rem 0;overflow:hidden;border-bottom:2px solid var(--ink)}
+.hero-bg-num{position:absolute;right:-0.02em;top:-0.1em;font-size:38vw;font-weight:800;color:var(--pale);line-height:1;pointer-events:none;z-index:0;user-select:none}
+.hero-content{position:relative;z-index:1}
+.hero-eyebrow{display:inline-block;background:var(--red);color:#fff;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;font-weight:700;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(52px,10vw,110px);font-weight:800;line-height:0.92;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:2.5rem}
+.hero h1 span{display:block;-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--ink);padding:1rem 0;gap:2rem;flex-wrap:wrap}
+.hero-bio{max-width:420px;font-size:13px;line-height:1.75;opacity:0.7;font-family:'Syne Mono',monospace}
+.hero-status{font-family:'Syne Mono',monospace;font-size:11px;text-align:right;opacity:0.5;line-height:1.9}
+
+.about{display:grid;grid-template-columns:1fr 2fr;border-bottom:2px solid var(--ink)}
+.about-left{border-right:2px solid var(--ink);padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:space-between}
+.about-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;writing-mode:vertical-lr;transform:rotate(180deg);align-self:flex-start}
+.about-stats{display:flex;flex-direction:column;gap:1.5rem}
+.stat-block{border-top:1px solid var(--ink);padding-top:0.75rem}
+.stat-val{font-size:36px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.stat-key{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-top:2px}
+.about-right{padding:2.5rem 2rem}
+.about-right h2{font-size:clamp(28px,4vw,44px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.05;margin-bottom:1.5rem}
+.about-right h2 em{font-style:normal;-webkit-text-stroke:1.5px var(--ink);color:transparent}
+.about-body{font-family:'Syne Mono',monospace;font-size:13px;line-height:1.85;opacity:0.75;max-width:500px;margin-bottom:2rem}
+.skills-grid{display:flex;flex-wrap:wrap;gap:0}
+.skill{border:1px solid var(--ink);padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin:-1px 0 0 -1px;transition:background .15s,color .15s;cursor:default}
+.skill:hover{background:var(--ink);color:var(--bg)}
+
+.exp-section{border-bottom:2px solid var(--ink)}
+.exp-header{display:flex;align-items:center;gap:1rem;padding:1.5rem 2rem;border-bottom:2px solid var(--ink);background:var(--red)}
+.exp-header h2{font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff}
+.exp-item{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--ink)}
+.exp-item:last-child{border-bottom:none}
+.exp-left{border-right:1px solid var(--ink);padding:1.75rem 1.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.exp-period{font-family:'Syne Mono',monospace;font-size:11px;opacity:0.5;line-height:1.6}
+.exp-num{font-size:52px;font-weight:800;opacity:0.08;letter-spacing:-0.04em;line-height:1;align-self:flex-end}
+.exp-right{padding:1.75rem 2rem}
+.exp-role{font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.1;margin-bottom:4px}
+.exp-co{font-family:'Syne Mono',monospace;font-size:11px;opacity:0.45;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.exp-desc{font-family:'Syne Mono',monospace;font-size:12px;line-height:1.85;opacity:0.65;max-width:500px;margin-bottom:1rem}
+.exp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--pale);padding:4px 10px;border:1px solid var(--ink)}
+
+/* Projects section */
+.proj-section{border-bottom:2px solid var(--ink)}
+.proj-header{display:flex;align-items:center;padding:1.5rem 2rem;border-bottom:2px solid var(--ink);background:var(--ink)}
+.proj-header h2{font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bg)}
+.proj-item{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--ink)}
+.proj-item:last-child{border-bottom:none}
+
+/* Extra */
+.extra-section{border-bottom:2px solid var(--ink);display:grid;grid-template-columns:1fr 1fr}
+.extra-block{padding:2rem;border-right:1px solid var(--ink)}
+.extra-block:last-child{border-right:none}
+.extra-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;opacity:0.4;margin-bottom:0.75rem}
+.extra-title{font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.1;margin-bottom:0.5rem}
+.extra-body{font-family:'Syne Mono',monospace;font-size:12px;opacity:0.65;line-height:1.75}
+
+.contact{display:grid;grid-template-columns:1fr 1fr}
+.contact-left{border-right:2px solid var(--ink);padding:3rem 2rem}
+.contact-left h2{font-size:clamp(36px,6vw,72px);font-weight:800;text-transform:uppercase;letter-spacing:-0.03em;line-height:0.95;margin-bottom:2rem}
+.contact-left h2 span{display:block;-webkit-text-stroke:2px var(--ink);color:transparent}
+.resume-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);border:none;padding:14px 24px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.resume-btn:hover{background:var(--red)}
+.contact-right{padding:3rem 2rem}
+.contact-link{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--ink);text-decoration:none;color:var(--ink);cursor:pointer;transition:padding-left .2s}
+.contact-link:first-child{border-top:1px solid var(--ink)}
+.contact-link:hover{padding-left:8px}
+.cl-name{font-weight:700;font-size:14px;letter-spacing:0.04em;text-transform:uppercase}
+.cl-val{font-family:'Syne Mono',monospace;font-size:11px;opacity:0.45}
+.cl-arr{font-size:18px;font-weight:800;transition:transform .2s}
+.contact-link:hover .cl-arr{transform:translate(4px,-4px)}
+
+footer{background:var(--ink);color:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85}
+
+@keyframes slideIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{animation:slideIn .5s ease both}
+.hero-eyebrow{animation-delay:.05s}
+.hero h1{animation-delay:.12s}
+.hero-foot{animation-delay:.22s}
+</style>
+
+<nav>
+  <span class="nav-name">Robert Villa</span>
+  <ul class="nav-links">
+    <li><a>About</a></li>
+    <li><a>Experience</a></li>
+    <li><a>Projects</a></li>
+    <li><a>Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-num" aria-hidden="true">R</div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Open to full-time · Starting Aug 2026</span>
+    <h1>Robert<br><span>Villa.</span></h1>
+    <div class="hero-foot">
+      <p class="hero-bio">CS + Economics @ Pomona College. I build full-stack products, train ML models, and somehow also play D3 baseball. Incoming M.S. CS @ USC.</p>
+      <div class="hero-status">
+        Pomona College · Claremont, CA<br>
+        B.A. Computer Science & Economics<br>
+        GPA 3.7 · May 2026<br>
+        M.S. CS @ USC · Aug 2026
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="about">
+  <div class="about-left">
+    <div class="about-stats">
+      <div class="stat-block">
+        <div class="stat-val">3</div>
+        <div class="stat-key">Internships</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">97.5%</div>
+        <div class="stat-key">ML accuracy</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">10K+</div>
+        <div class="stat-key">Products scraped</div>
+      </div>
+    </div>
+    <div class="about-label">About</div>
+  </div>
+  <div class="about-right">
+    <h2>I ship<br><em>real</em><br>software.</h2>
+    <p class="about-body">I'm a CS + Economics double major at Pomona College, heading to USC for my master's. I've built production eCommerce platforms, interactive security systems, full-stack sports tech sites, and ML classifiers that actually perform.<br><br>Off the keyboard: NCAA D3 baseball player, student government rep who helped manage a $750K budget, and someone who thinks game dev is the hardest and most fun CS problem there is.</p>
+    <div class="skills-grid">
+      <div class="skill">Python</div>
+      <div class="skill">Java</div>
+      <div class="skill">C++</div>
+      <div class="skill">C#</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">SQL</div>
+      <div class="skill">TensorFlow</div>
+      <div class="skill">Keras</div>
+      <div class="skill">scikit-learn</div>
+      <div class="skill">OpenCV</div>
+      <div class="skill">React</div>
+      <div class="skill">Git</div>
+      <div class="skill">Linux</div>
+      <div class="skill">Figma</div>
+      <div class="skill">Godot</div>
+      <div class="skill">Unreal Engine</div>
+    </div>
+  </div>
+</div>
+
+<div class="exp-section">
+  <div class="exp-header"><h2>Experience</h2></div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">May 2026<br>Present</div>
+      <div class="exp-num">01</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Software Engineering Intern</div>
+      <div class="exp-co">Yusen Terminals LLC · San Pedro, CA</div>
+      <div class="exp-desc">Built an interactive map of 100+ live security camera feeds layered onto terminal map data, enabling security teams to visually navigate and pull up feeds by location rather than scrolling endless lists.</div>
+      <div class="exp-chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Mapping</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">Mar 2026<br>Present</div>
+      <div class="exp-num">02</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Software Engineering Intern</div>
+      <div class="exp-co">Wargame Trader · New York, NY (Remote)</div>
+      <div class="exp-desc">Engineered automated web scraping pipelines that ingested 10,000+ products into a multi-vendor marketplace. Building the full production eCommerce platform end-to-end.</div>
+      <div class="exp-chips"><span class="chip">Python</span><span class="chip">Liquid</span><span class="chip">JavaScript</span><span class="chip">Web Scraping</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">Jun 2024<br>Feb 2025</div>
+      <div class="exp-num">03</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Software Engineer Intern</div>
+      <div class="exp-co">Eval Sports · Moraga, CA</div>
+      <div class="exp-desc">Owned the full software development lifecycle for a production sports tech website — from requirements gathering through launch. Designed iterative testing workflows and collaborated across design and engineering to ship production-ready components.</div>
+      <div class="exp-chips"><span class="chip">HTML/CSS</span><span class="chip">JavaScript</span><span class="chip">Full-Stack</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">Aug 2023<br>Present</div>
+      <div class="exp-num">04</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Athletic Communications Manager</div>
+      <div class="exp-co">Pomona College · Claremont, CA</div>
+      <div class="exp-desc">Live play-by-play commentary for NCAA D3 baseball, volleyball, and basketball broadcasts — simultaneously operating real-time scoring systems and logging validated game statistics across reporting pipelines.</div>
+      <div class="exp-chips"><span class="chip">Broadcasting</span><span class="chip">Real-Time Systems</span><span class="chip">NCAA D3</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-section">
+  <div class="proj-header"><h2>Projects</h2></div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">Spring 2025</div>
+      <div class="exp-num">01</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">ML Traffic Sign Classifier</div>
+      <div class="exp-co">Python · TensorFlow · Keras · scikit-learn · OpenCV</div>
+      <div class="exp-desc">Trained a CNN on 50,000+ labeled images achieving 97.5% accuracy on the GTSRB benchmark across 43 imbalanced sign classes. Built end-to-end data ingestion and preprocessing pipelines; improved robustness via hyperparameter tuning and data augmentation.</div>
+      <div class="exp-chips"><span class="chip">Deep Learning</span><span class="chip">CNN</span><span class="chip">Computer Vision</span><span class="chip">97.5% Accuracy</span></div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-period">2024<br>Present</div>
+      <div class="exp-num">02</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Original Games — Godot & Unreal</div>
+      <div class="exp-co">C# · C++ · GDScript · Game Development</div>
+      <div class="exp-desc">Building original games in Godot (C#) and Unreal Engine (C++) with procedural terrain generation and adaptive enemy AI using finite state machines with real-time player tracking and reactive control loops.</div>
+      <div class="exp-chips"><span class="chip">C#</span><span class="chip">C++</span><span class="chip">Godot</span><span class="chip">Unreal</span><span class="chip">FSM</span><span class="chip">Proc. Gen</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="extra-section">
+  <div class="extra-block">
+    <div class="extra-label">Athletics</div>
+    <div class="extra-title">NCAA D3 Baseball</div>
+    <div class="extra-body">Pomona-Pitzer Sagehens — maintained a 3.7 GPA as a full-time student-athlete. Competing at the collegiate level while shipping production software.</div>
+  </div>
+  <div class="extra-block">
+    <div class="extra-label">Leadership</div>
+    <div class="extra-title">ASPC North Campus Rep</div>
+    <div class="extra-body">Co-administered Pomona College's $750,000 student budget. Led the web development team serving 1,000+ students on campus.</div>
+  </div>
+</div>
+
+<div class="contact">
+  <div class="contact-left">
+    <h2>Let's<br><span>talk.</span></h2>
+    <button class="resume-btn" onclick="alert('Link your resume PDF here!')">↓ Download résumé</button>
+  </div>
+  <div class="contact-right">
+    <a class="contact-link" href="mailto:robertwvilla12@gmail.com">
+      <div><div class="cl-name">Email</div><div class="cl-val">robertwvilla12@gmail.com</div></div>
+      <span class="cl-arr">↗</span>
+    </a>
+    <a class="contact-link" href="https://linkedin.com/in/robert-villa-jr" target="_blank">
+      <div><div class="cl-name">LinkedIn</div><div class="cl-val">linkedin.com/in/robert-villa-jr</div></div>
+      <span class="cl-arr">↗</span>
+    </a>
+    <a class="contact-link">
+      <div><div class="cl-name">Phone</div><div class="cl-val">(510) 709-7129</div></div>
+      <span class="cl-arr">↗</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>Robert Villa Jr. — Portfolio 2025</span>
+  <span>Pomona → USC</span>
+</footer>
