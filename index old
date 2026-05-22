@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robert Villa's Porfolio </title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1 class="title">Robert Villa Jr.'s Portfolio</h1>
+
+    <p id="intro"> I am a prospective Computer Science and Economics double major in my junior year at 
+        Pomona College. I have worked in the past in communications and athletics, alongside being a 
+        part of the varsity Pomona-Pitzer baseball team.    </p>
+    
+    <p>What would you like to learn?
+        <li>My Projects 
+            <ul>
+            <li>Graphics Engine <i>("RIDDIM MACHINE")</i></li>
+            <li>Game Development</li>
+            <li>Music Production</li>
+                <ul>
+                <li>Bass Music (Dubstep, Techno, etc.)</li>
+                <li>House Music</li>
+                <li>Other</li>
+                </ul>
+            </ul>
+        </li>    
+        <li>About Me</li>
+        <li>Contact Me</li>
+    </p>
+    
+
+</body>
+
+
+</html>
